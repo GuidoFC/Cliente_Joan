@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- How to insert an image in our HTML using the tag "img" -->
+    <img id="carta1" src="" />
+    <img id="carta2" src="" />
+    <img id="carta3" src="" />
+    <img id="carta4" src="" />
+    <img id="carta5" src="" />
+    <h1>Hola</h1>
+    <div></div>
+    <button onclick="playHard()">Play</button>
+
+    <script>
+      //  función constructora en JavaScript llamada Card.
+      // Si usamos una función constructora hay que poner la primera
+      // letra en mayusucula
+      // Una función constructora se utiliza para crear objetos personalizados
+      function Card(number, type) {
+        // Si quieres asegurarte de que los parámetros sean siempre strings,
+        // puedes convertirlos explícitamente dentro del constructor:
+        this.number = String(number); // Convertir a string
+        this.type = String(type); // Convertir a string
+        this.image = String(`../cards/${number}_of_${type}.png`);
+      }
+
+      //  number es un array de String
+      const number = [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "ace",
+        "jack",
+        "king",
+        "queen",
+      ];
+      //  type es un array de String
+      const type = ["clubs", "diamonds", "spades", "hearts"];
+
+      // Usaremos este array para guardar los objetos que crearemos
+      // en el bucle for
+      const cards = [];
+
+      // primera parte es crear los objetos usando un bucle for
+      for (let i = 0; i < number.length; i++) {
+        for (let j = 0; j < type.length; j++) {
+          cards.push(new Card(number[i], type[j]));
+        }
+      }
+
+      // se utiliza para mostrar el contenido de un array o
+      // un objeto en forma de tabla en la consola del navegador.
+      console.table(cards);
+
+      // segunda parte
+      // Ahora tenemos que mostras 5 cartas diferentes
+      // primero creo un contenedor donde guardare las cartas
+      let fiveCards = [];
+      // Guardaremos los número aleatorios para evitar tener números
+      // aleatorios repetidos.
+      let saveRandomNumber = [];
+      // variable para seleccionar las cartas de forma aleatiaria
+      let randomNumber = -1;
+
+      let contadorCartas = 1;
+
+      
+      
+      // COMO PUEDO REUSAR LA FUNCION DE PLAYHARD??????
+      function playHard() {
+        do {
+          randomNumber = generateRandomNumber(cards.length - 1);
+          // console.log("numero de vueltas: " + contadorCartas);
+          if (saveRandomNumber.length == 0) {
+            // debugger
+            console.log("longitud: 0");
+            saveCard(randomNumber);
+            contadorCartas++;
+          } else {
+            // I need to check if we have the random number in
+            // our array
+            if (!isReapeat(randomNumber)) {
+              saveCard(randomNumber);
+              contadorCartas++;
+            }
+          }
+        } while (contadorCartas != 6);
+
+        let contadorCartas2 = 1;
+        // add this object to html
+        for (let i = 0; i < fiveCards.length; i++) {
+          console.log("cogiendo 1 carta");
+          let carta1 = fiveCards[i];
+
+          document.querySelector("#carta" + contadorCartas2).src = carta1.image;
+          document.querySelector("#carta" + contadorCartas2).style.width =
+            "150px";
+          contadorCartas2++;
+        }
+      }
+
+      function generateRandomNumber(max) {
+        return Math.floor(Math.random() * max);
+      }
+
+      function isReapeat(randomNumber) {
+        for (let i = 0; i < saveRandomNumber.length; i++) {
+          if (randomNumber == saveRandomNumber[i]) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function saveCard(num) {
+        // save this random number to avoid reapeting the same number
+        saveRandomNumber.push(num);
+        // we get the index of the deck and we save this card to our array
+        fiveCards.push(cards[num]);
+      }
+
+    
+
+      // create an object, but we don't use it
+      // const prova = new Card("2", "clubs");
+      // console.log(prova.number, prova.type);
+   
+
+      // COMO PUEDO REUSAR LA FUNCION DE PLAYHARD??????
+      // Tengo que subirlo a github
+      // tengo que seguir las instrucciones de PDF
+      // Tengo que revisar como funciona los eventos con los apuntes de Cristina
+    </script>
+  </body>
+</html>
