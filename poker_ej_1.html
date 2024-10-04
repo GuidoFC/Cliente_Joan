@@ -75,8 +75,6 @@
 
       let contadorCartas = 1;
 
-      
-      
       // COMO PUEDO REUSAR LA FUNCION DE PLAYHARD??????
       function playHard() {
         do {
@@ -130,18 +128,36 @@
         fiveCards.push(cards[num]);
       }
 
-    
-
       // create an object, but we don't use it
       // const prova = new Card("2", "clubs");
       // console.log(prova.number, prova.type);
-   
 
       // COMO PUEDO REUSAR LA FUNCION DE PLAYHARD??????
-      
-      
+
       // tengo que seguir las instrucciones de PDF
+      /*
+      a) Quan es premi el botó jugar surti un "prompt" que et demani si vols fer
+trampes o no. La resposta, si é s "SI" (no case sensitive), el programa ha de mostrar
+que has guanyat SEMPRE encara que les cartes no coincideixin amb cap
+combinació guanyadora. En cas de no respondre "SI", el programa ha de jugar
+normalment. Una vegada que l'usuari hagi introduit la resposta, el programa ha de
+donar un missatge d'avís (alert) per saber si l'usuari juga fent trampes o no.
+      */
+      let respuesta = prompt("Do you want to cheat?");
+      // Para hacer la comparativa estricta tenemos que poner 3 iguales =
+      // y tenemos que poner "yes" entre comillas para que sepa que es un String
+      if (respuesta === "yes") {
+        alert("Eres un tramposo");
+      } else {
+        alert("Eres honesto");
+      }
+      // info para abri una nueva ventana
+      // https://www.w3schools.com/jsref/met_win_open.asp
+      window.open("https://www.w3schools.com", "", "height=800, width=300");
       // Tengo que revisar como funciona los eventos con los apuntes de Cristina
+
+      // info para cerrar una ventana
+      // https://www.w3schools.com/jsref/met_win_close.asp
     </script>
   </body>
 </html>
