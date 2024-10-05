@@ -13,8 +13,9 @@
     <img id="carta4" src="" />
     <img id="carta5" src="" />
     <h1>Hola</h1>
-    <div></div>
-    <button id="buttonPlay1">Play</button>
+    <div id="Botones">
+      <button id="buttonPlay1">Play</button>
+    </div>
 
     <script>
       //  función constructora en JavaScript llamada Card.
@@ -170,33 +171,69 @@
       } else {
         alert("Eres honesto");
       }
-      // info para abri una nueva ventana
-      // https://www.w3schools.com/jsref/met_win_open.asp
-
-      // DEJO COMENTADO ESTE CODIGO PARA QUE NO SE ME ABRAN MUCHAS PAGINAS
-      buttonPlay.addEventListener("click", opneWindow);
-      function opneWindow() {
-        window.open("./Poquer BOM/pag_emer.html", "", "height=800, width=300");
-      }
 
       /*
       c) Afegir a la finestra principal dos botons, un per tancar la finestra del joc i
-      l'altre per tancar tot el programa (finestra del joc i laprò pia finestra principal).
+      l'altre per tancar tot el programa (finestra del joc i l'apròpia finestra principal).
       */
 
       // Primero creamos el boton desde JavaScript
+      // cogemos el contendor padre
+      const contendorDiv = document.querySelector("#Botones");
 
-      let newElement = document.createElement("button");
-      var t = document.createTextNode("Close all");
-      //  adds the text node to the button.
-      newElement.appendChild(t);
-      // appends the button to the webpage's body, making it visible.
-      document.body.appendChild(newElement);
+      // we create the second button to close the game
+      let newButtonClose = document.createElement("button");
+      newButtonClose.innerHTML = "Cerrar Juego";
+
+      contendorDiv.appendChild(newButtonClose);
+
+      // we create the third button to close the game and the current window
+      let newButtonCloseAll = document.createElement("button");
+      newButtonCloseAll.innerHTML = "Cerrar Juego y pagina Acutal";
+
+      // No entiendo porque no se agrega en el HTML!!!!!
+      contendorDiv.appendChild(newButtonCloseAll);
+
+      newButtonClose.addEventListener("click", closeOnlyWindowGame);
+      newButtonCloseAll.addEventListener("click", closeCurrentWindowAndGame);
+
+      // info para abri una nueva ventana
+      // https://www.w3schools.com/jsref/met_win_open.asp
+
+      buttonPlay.addEventListener("click", opneWindow);
+
+      // We create a new variable to open and close the windows
+      let opne_window_close;
+      let open_same_window;
+
+      function opneWindow() {
+        open_same_window = window.open("", "_self", "");
+        opne_window_close = window.open(
+          "./Poquer BOM/pag_emer.html",
+          "",
+          "height=800, width=300"
+        );
+      }
+
+      function closeOnlyWindowGame() {
+        opne_window_close.close("./Poquer BOM/pag_emer.html");
+      }
+
+      function closeCurrentWindowAndGame() {
+        opne_window_close.close("./Poquer BOM/pag_emer.html");
+        // No funciona para cerrar la pagina actual porque el navegador lo impide !!!!
+        opne_window_close.close("poker_ej_1.html");
+      }
 
       // info para cerrar una ventana
       // https://www.w3schools.com/jsref/met_win_close.asp
 
       // Tengo que revisar como funciona los eventos con los apuntes de Cristina
+
+      /*
+      d) A la finestra emergent del joc, poseu un botó per refrescar la pà gina i mostrar
+així, una solució diferent en cada refresc.
+      */
     </script>
   </body>
 </html>
