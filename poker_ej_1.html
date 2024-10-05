@@ -174,7 +174,24 @@
       // https://www.w3schools.com/jsref/met_win_open.asp
 
       // DEJO COMENTADO ESTE CODIGO PARA QUE NO SE ME ABRAN MUCHAS PAGINAS
-      //window.open("https://www.w3schools.com", "", "height=800, width=300");
+      buttonPlay.addEventListener("click", opneWindow);
+      function opneWindow() {
+        window.open("./Poquer BOM/pag_emer.html", "", "height=800, width=300");
+      }
+
+      /*
+      c) Afegir a la finestra principal dos botons, un per tancar la finestra del joc i
+      l'altre per tancar tot el programa (finestra del joc i laprò pia finestra principal).
+      */
+
+      // Primero creamos el boton desde JavaScript
+
+      let newElement = document.createElement("button");
+      var t = document.createTextNode("Close all");
+      //  adds the text node to the button.
+      newElement.appendChild(t);
+      // appends the button to the webpage's body, making it visible.
+      document.body.appendChild(newElement);
 
       // info para cerrar una ventana
       // https://www.w3schools.com/jsref/met_win_close.asp
