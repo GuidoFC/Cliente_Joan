@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- <script type="module" src="./logica1.js"></script> -->
   </head>
   <body>
     <!-- How to insert an image in our HTML using the tag "img" -->
@@ -78,10 +79,32 @@
       let contadorCartas2 = 1;
 
       // COMO PUEDO REUSAR LA FUNCION DE PLAYHARD??????
+      // Primero creamos el boton desde JavaScript
+      // cogemos el contendor padre
+      const contendorDiv = document.querySelector("#Botones");
+
+      // we create the second button to close the game
+      let newButtonClose = document.createElement("button");
+      newButtonClose.innerHTML = "Cerrar Juego";
+
+      contendorDiv.appendChild(newButtonClose);
+
+      // we create the third button to close the game and the current window
+      let newButtonCloseAll = document.createElement("button");
+      newButtonCloseAll.innerHTML = "Cerrar Juego y pagina Acutal";
+
+      // No entiendo porque no se agrega en el HTML!!!!!
+      contendorDiv.appendChild(newButtonCloseAll);
 
       // we create a new variable to get the button
       let buttonPlay = document.querySelector("#buttonPlay1");
       buttonPlay.addEventListener("click", playHard);
+
+      // Creare el elemento y lo único que hare es modificarlo con InnerHTML
+      let newParrafo = document.createElement("p");
+      newParrafo.innerHTML = "Resultado del Juego";
+
+      contendorDiv.appendChild(newParrafo);
 
       function playHard() {
         // first we need to empty our array, may be it is the second time
@@ -121,8 +144,36 @@
             "150px";
           contadorCartas2++;
         }
+        let esTramposo = isWinning(respuesta);
+
+        if (esTramposo) {
+          // Creare el elemento y lo único que hare es modificarlo con InnerHTML
+          newParrafo.innerHTML = "Escalera real, has ganado!";
+        } else {
+          if (isPair()) {
+            newParrafo.innerHTML = "Las cartas son pares";
+          } else {
+            newParrafo.innerHTML = "No hay cartas pares";
+          }
+        }
       }
 
+      function isPair() {
+        for (let i = 0; i < fiveCards.length; i++) {
+          for (let j = i + 1; j < fiveCards.length; j++) {
+            if (fiveCards[i].number === fiveCards[j].number) {
+              let carta11 = fiveCards[i].number;
+              let carta22 = fiveCards[j].number;
+              console.log("Que cartas son iguales?");
+              console.log(carta11);
+              console.log(carta22);
+
+              return true;
+            }
+          }
+        }
+        return false;
+      }
       function resetCards() {
         fiveCards.splice(0, fiveCards.length);
         saveRandomNumber.splice(0, saveRandomNumber.length);
@@ -190,27 +241,13 @@
         }
       }
 
+      //   No funciona el export
+      //   export{respuesta};
+
       /*
       c) Afegir a la finestra principal dos botons, un per tancar la finestra del joc i
       l'altre per tancar tot el programa (finestra del joc i l'apròpia finestra principal).
       */
-
-      // Primero creamos el boton desde JavaScript
-      // cogemos el contendor padre
-      const contendorDiv = document.querySelector("#Botones");
-
-      // we create the second button to close the game
-      let newButtonClose = document.createElement("button");
-      newButtonClose.innerHTML = "Cerrar Juego";
-
-      contendorDiv.appendChild(newButtonClose);
-
-      // we create the third button to close the game and the current window
-      let newButtonCloseAll = document.createElement("button");
-      newButtonCloseAll.innerHTML = "Cerrar Juego y pagina Acutal";
-
-      // No entiendo porque no se agrega en el HTML!!!!!
-      contendorDiv.appendChild(newButtonCloseAll);
 
       newButtonClose.addEventListener("click", closeOnlyWindowGame);
       newButtonCloseAll.addEventListener("click", closeCurrentWindowAndGame);
@@ -227,7 +264,7 @@
       function opneWindow() {
         open_same_window = window.open("", "_self", "");
         opne_window_close = window.open(
-          "./Poquer BOM/pag_emer.html",
+          "./pag_emer.html",
           "",
           "height=800, width=300"
         );
@@ -256,7 +293,17 @@
       i have to create a button to update the cards
       second, i have to pass the information about if user wants to do cheat or not
       finally i have to see if user wins or not
+
+      
       */
+      function isWinning(respuesta) {
+        let doCheat = true;
+        if (respuesta === "YES") {
+          return doCheat;
+        } else {
+          return (doCheat = false);
+        }
+      }
     </script>
   </body>
 </html>
