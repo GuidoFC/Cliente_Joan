@@ -162,14 +162,32 @@
       combinació guanyadora. En cas de no respondre "SI", el programa ha de jugar
       normalment. Una vegada que l'usuari hagi introduit la resposta, el programa ha de
       donar un missatge d'avís (alert) per saber si l'usuari juga fent trampes o no.
+
             */
-      let respuesta = prompt("Do you want to cheat?");
-      // Para hacer la comparativa estricta tenemos que poner 3 iguales =
-      // y tenemos que poner "yes" entre comillas para que sepa que es un String
-      if (respuesta === "yes") {
-        alert("Eres un tramposo");
-      } else {
-        alert("Eres honesto");
+
+      let respuesta = "";
+      function askUserCheat() {
+        respuesta = prompt("Do you want to cheat?");
+        return respuesta.toUpperCase();
+      }
+
+      let rightAnswer = false;
+      while (rightAnswer == false) {
+        respuesta = askUserCheat();
+        switch (respuesta) {
+          case "YES":
+            alert("Eres un tramposo");
+            rightAnswer = true;
+            break;
+          case "NO":
+            alert("Eres honesto");
+            rightAnswer = true;
+            break;
+
+          default:
+            alert("Only it's possible to choose: YES or NO");
+            break;
+        }
       }
 
       /*
@@ -231,8 +249,13 @@
       // Tengo que revisar como funciona los eventos con los apuntes de Cristina
 
       /*
-      d) A la finestra emergent del joc, poseu un botó per refrescar la pà gina i mostrar
-així, una solució diferent en cada refresc.
+      d) A la finestra emergent del joc, poseu un botó per refrescar la pàgina i mostrar
+      així, una solució diferent en cada refresc.
+
+      first, i have to show the cards in the other website
+      i have to create a button to update the cards
+      second, i have to pass the information about if user wants to do cheat or not
+      finally i have to see if user wins or not
       */
     </script>
   </body>
