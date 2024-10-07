@@ -15,6 +15,18 @@
       createImg();
 
       putImg(1);
+
+      const alfabeto = createAllLetters();
+      debugger;
+      console.table(alfabeto);
+
+      function createDivToWords() {
+        const getBody = document.querySelector("body");
+        const divNew = document.createElement("div");
+        divNew.setAttribute("id", "app");
+
+        getBody.appendChild(divNew);
+      }
     </script>
   </body>
 </html>
