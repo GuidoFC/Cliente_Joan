@@ -17,16 +17,31 @@
       putImg(1);
 
       const alfabeto = createAllLetters();
-      debugger;
-      console.table(alfabeto);
 
-      function createDivToWords() {
+      function createDivToWords(alfabeto) {
+        // TODO necesito crear un div padre y luego muchos div para cada letra
+        // contendor padre
         const getBody = document.querySelector("body");
         const divNew = document.createElement("div");
-        divNew.setAttribute("id", "app");
-
+        divNew.setAttribute("id", "contendor");
+        divNew.textContent = "Es un contendor";
         getBody.appendChild(divNew);
+
+        // crear los div dentro del contendor padre
+        const getDivContendor = document.querySelector("#contendor");
+        for (let i = 0; i < alfabeto.length; i++) {
+          const divSon = document.createElement("button");
+          divSon.setAttribute("id", "hijo" + i);
+          const letra = alfabeto[i];
+          debugger;
+          console.log(letra.letraAlfrabeto);
+
+          divSon.textContent = letra.letraAlfrabeto;
+          getDivContendor.appendChild(divSon);
+        }
       }
+
+      createDivToWords(alfabeto);
     </script>
   </body>
 </html>
