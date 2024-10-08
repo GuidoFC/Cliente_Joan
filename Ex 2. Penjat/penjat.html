@@ -21,33 +21,31 @@
       function createDivToWords(alfabeto) {
         // TODO necesito crear un div padre y luego muchos div para cada letra
         // contendor padre
-        const getBody = document.querySelector("body");
-        const divNew = document.createElement("div");
-        divNew.setAttribute("id", "contendor");
-        getBody.appendChild(divNew);
+
+        createContendorDiv();
 
         // crear los div dentro del contendor padre
         const getDivContendor = document.querySelector("#contendor");
-        for (let i = 0; i < alfabeto.length; i++) {
-          const divSon = document.createElement("button");
-          divSon.setAttribute("id", "hijo" + i);
-          const letra = alfabeto[i];
-          debugger;
-          console.log(letra.letraAlfrabeto);
+        createAllDivForEachLetter(getDivContendor);
+        styleDefault(getDivContendor);
+        // to do an array with 4 words y hacer una que aparezca
+        // createWordsToGuess(getDivContendor);
+        // function createWordsToGuess(getDivContendor) {
+        const arrayWords = ["Horno", "Mundo", "Classe", "Ordenador"];
+        const newParagraph = document.createElement("p");
+        // Estilo
+        let palabraAdivinar = arrayWords[3];
+        newParagraph.textContent = arrayWords[3];
+        newParagraph.style.textAlign = "center";
+        newParagraph.style.fontSize = "35px";
+        // funtion to count how many letter have this word
+        // Variable String have the method length
+        debugger;
+        console.log(palabraAdivinar.length);
 
-          divSon.textContent = letra.letraAlfrabeto;
-          getDivContendor.appendChild(divSon);
-          // change color button!!
-          divSon.style.background = "rgb(101, 101, 101)";
-          // divSon.style.margin = "5px";
-        }
-        getDivContendor.style.display = "flex";
-        // info: https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox
-        getDivContendor.style.justifyContent = "space-around";
-        getDivContendor.style.width = "80%";
-        getDivContendor.style.margin = "100px auto";
-        // cambiar el color de un solo boton
-        document.querySelector("#hijo2").style.background = "rgb(101, 10, 101)";
+        // TODO PENDIENTE
+        const getDivApp = document.querySelector("#app");
+        getDivApp.appendChild(newParagraph);
       }
 
       createDivToWords(alfabeto);
