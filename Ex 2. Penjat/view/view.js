@@ -35,6 +35,7 @@ function putImg(numPhoto) {
     for (let i = 0; i < alfabeto.length; i++) {
       const divSon = document.createElement("button");
       divSon.setAttribute("id", "hijo" + i);
+      divSon.setAttribute("class", "classButton");
       const letra = alfabeto[i];
     
       console.log(letra.letraAlfrabeto);
