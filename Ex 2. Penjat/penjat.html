@@ -38,14 +38,21 @@
         newParagraph.textContent = arrayWords[3];
         newParagraph.style.textAlign = "center";
         newParagraph.style.fontSize = "35px";
+        // add to our html
+        const getDivApp = document.querySelector("#app");
+        getDivApp.appendChild(newParagraph);
+
         // funtion to count how many letter have this word
         // Variable String have the method length
         debugger;
         console.log(palabraAdivinar.length);
 
-        // TODO PENDIENTE
-        const getDivApp = document.querySelector("#app");
-        getDivApp.appendChild(newParagraph);
+        // tranform all the words in this character "_"
+        let allLettersAreHyphen = "";
+        for (let i = 0; i < palabraAdivinar.length; i++) {
+          allLettersAreHyphen = allLettersAreHyphen + "_ ";
+        }
+        newParagraph.textContent = allLettersAreHyphen;
       }
 
       createDivToWords(alfabeto);
