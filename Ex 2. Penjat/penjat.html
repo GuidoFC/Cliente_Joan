@@ -30,9 +30,57 @@
         styleDefault(getDivContendor);
         // to do an array with 4 words y hacer una que aparezca
         const palabraAdivinar = createWordsToGuess(getDivContendor);
+        // befote to do this i want to save this word in another variable
+        const savePalabraAdivinar = palabraAdivinar;
 
         // tranform all the words in this character "_"
         transformWordsToUnderscore(palabraAdivinar);
+        //
+        // select all the button with class -> classButton
+        const allButtons = document.querySelectorAll(".classButton");
+        console.table(allButtons);
+
+        // disable a button
+        function disableButton() {
+          const anyButton = this;
+          // the button can´t be clicked two times
+          anyButton.disabled = true;
+        }
+
+        for (let i = 0; i < allButtons.length; i++) {
+          allButtons[i].addEventListener("click", disableButton);
+          // con esta función anomina evito que se ejecute inmediatamente la función!!!!!!
+          // Entender que significa esto de event
+          // Pasamos el evento click para poder acceder al botón clicado
+          allButtons[i].addEventListener("click", (event) =>
+            getTextButton(savePalabraAdivinar)
+          );
+        }
+
+        // get text of the button
+        function getTextButton(savePalabraAdivinar) {
+          // Entender que significa esto de event
+          const anyButton = event.target; // 'event.target' es el botón que fue clicado
+
+          const getLetter = anyButton.textContent;
+          const palabraCriptada = savePalabraAdivinar;
+          debugger;
+          if (thereIsThisLetter(getLetter, palabraCriptada)) {
+            console.log("guay");
+          } else {
+            console.log("no hay");
+          }
+        }
+      }
+
+      function thereIsThisLetter(getLetter, palabraCriptada) {
+        const getWord = getLetter;
+        for (let i = 0; i < palabraCriptada.length; i++) {
+          if (palabraCriptada.charAt(i) === getLetter) {
+            return true;
+          }
+        }
+        return false;
       }
 
       createDivToWords(alfabeto);

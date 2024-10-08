@@ -60,10 +60,12 @@ function putImg(numPhoto) {
   }
 
   function createWordsToGuess(getDivContendor) {
-    const arrayWords = ["Horno", "Mundo", "Classe", "Ordenador"];
+    const arrayWords = ["HORNO", "MUNDO", "CLASSE", "ORDENADOR"];
     const newParagraph = document.createElement("p");
     newParagraph.setAttribute("id","palabaElegida");
     // Estilo
+    // TODO tiene que ser aleatorio, crear un método (creo que ya esta creado el método, rehusarlo)
+    // generateRandomNumber(max)
     let palabraAdivinar = arrayWords[3];
     newParagraph.textContent = arrayWords[3];
     newParagraph.style.textAlign = "center";
