@@ -29,30 +29,10 @@
         createAllDivForEachLetter(getDivContendor);
         styleDefault(getDivContendor);
         // to do an array with 4 words y hacer una que aparezca
-        // createWordsToGuess(getDivContendor);
-        // function createWordsToGuess(getDivContendor) {
-        const arrayWords = ["Horno", "Mundo", "Classe", "Ordenador"];
-        const newParagraph = document.createElement("p");
-        // Estilo
-        let palabraAdivinar = arrayWords[3];
-        newParagraph.textContent = arrayWords[3];
-        newParagraph.style.textAlign = "center";
-        newParagraph.style.fontSize = "35px";
-        // add to our html
-        const getDivApp = document.querySelector("#app");
-        getDivApp.appendChild(newParagraph);
-
-        // funtion to count how many letter have this word
-        // Variable String have the method length
-        debugger;
-        console.log(palabraAdivinar.length);
+        const palabraAdivinar = createWordsToGuess(getDivContendor);
 
         // tranform all the words in this character "_"
-        let allLettersAreHyphen = "";
-        for (let i = 0; i < palabraAdivinar.length; i++) {
-          allLettersAreHyphen = allLettersAreHyphen + "_ ";
-        }
-        newParagraph.textContent = allLettersAreHyphen;
+        transformWordsToUnderscore(palabraAdivinar);
       }
 
       createDivToWords(alfabeto);
