@@ -64,11 +64,17 @@
 
           const getLetter = anyButton.textContent;
           const palabraCriptada = savePalabraAdivinar;
-          debugger;
+
           if (thereIsThisLetter(getLetter, palabraCriptada)) {
-            console.log("guay");
+            console.log("pintar verde");
+            // cambiar el color de un solo boton
+            anyButton.style.background = "rgb(111, 247, 112)";
+            // desvelaremos una casilla
           } else {
-            console.log("no hay");
+            console.log("pintar rojo");
+            anyButton.style.background = "rgb(205, 56, 75)";
+            // cambiaremos la imagen
+            changePhoto();
           }
         }
       }
@@ -81,6 +87,40 @@
           }
         }
         return false;
+      }
+
+      function changePhoto() {
+        // Tengo que saber el numero de la foto
+        const getImg = document.querySelector("#photo");
+
+        const getNumberActualPhoto = getNumberPhoto(getImg);
+
+        console.log(getNumberActualPhoto);
+
+        const incrementNumber = Number(getNumberActualPhoto) + 1;
+        // incrementar ese numero para cambiar de foto
+        // TODO no puedo pasar a otra foto
+        debugger;
+        const getSrcIMG = getImg.src;
+        const pngActual = getNumberActualPhoto + ".PNG";
+        const nextPng = incrementNumber + ".PNG";
+        const newSrc = getSrcIMG.replace(pngActual, nextPng);
+        // Asignamos el nuevo `src` a la imagen para que cambie
+        getImg.src = newSrc;
+
+        // getImg.src =
+        //   "http://127.0.0.1:5500/Ex%202.%20Penjat/assests/img/" +
+        //   incrementNumber +
+        //   ".PNG";
+      }
+
+      function getNumberPhoto(getImg) {
+        const getSrcIMG = getImg.src;
+
+        console.log(getSrcIMG);
+        const getPosition = Number(getSrcIMG.length - 5);
+        const getNumber = getSrcIMG.charAt(getPosition);
+        return getNumber;
       }
 
       createDivToWords(alfabeto);

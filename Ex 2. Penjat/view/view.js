@@ -54,9 +54,7 @@ function putImg(numPhoto) {
     getDivContendor.style.justifyContent = "space-around";
     getDivContendor.style.width = "80%";
     getDivContendor.style.margin = "100px auto";
-    // cambiar el color de un solo boton
-    document.querySelector("#hijo2").style.background =
-      "rgb(101, 10, 101)";
+    
   }
 
   function createWordsToGuess(getDivContendor) {
