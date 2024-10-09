@@ -82,3 +82,30 @@ function disableButton() {
     updateParagraph(reconstruirPalabra);
     
   }
+
+  function findLetterIndexInWord(palabraCriptada) {
+    const matchLetter = [];
+    for (let i = 0; i < palabraCriptada.length; i++) {
+      if (palabraCriptada.charAt(i) === getLetter) {
+        matchLetter.push(i);
+      }
+    }
+    return matchLetter;
+  }
+  function findLetterIndexInWord(palabraCriptada, getLetter) {
+    const matchLetter = [];
+    for (let i = 0; i < palabraCriptada.length; i++) {
+      if (palabraCriptada.charAt(i) === getLetter) {
+        matchLetter.push(i);
+      }
+    }
+    return matchLetter;
+  }
+  function multiplicarX2(matchLetter) {
+    const getNumber = [];
+    for (let i = 0; i < matchLetter.length; i++) {
+      const getIndex = Number(matchLetter[i]) * 2;
+      getNumber.push(getIndex);
+    }
+    return getNumber;
+  }

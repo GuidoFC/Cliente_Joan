@@ -69,30 +69,15 @@
             // desvelaremos una casilla
             unveilLetter(getLetter, palabraCriptada);
             function unveilLetter(getLetter, palabraCriptada) {
-              const matchLetter = [];
               console.log(palabraCriptada);
-              for (let i = 0; i < palabraCriptada.length; i++) {
-                if (palabraCriptada.charAt(i) === getLetter) {
-                  matchLetter.push(i);
-                }
-              }
-
-              console.log(
-                "Posicion de las letras de ordenador, con la letra O elegida"
+              const matchLetter = findLetterIndexInWord(
+                palabraCriptada,
+                getLetter
               );
-              const indexMult2 = multiplicarX2(matchLetter);
-              function multiplicarX2(matchLetter) {
-                const getNumber = [];
-                for (let i = 0; i < matchLetter.length; i++) {
-                  const getIndex = Number(matchLetter[i]) * 2;
-                  getNumber.push(getIndex);
-                }
-                return getNumber;
-              }
 
-              console.log(indexMult2);
-              // Tengo la palabra asi: _ _ _ _
-              // Tengo que contar los guiones
+              debugger;
+              console.log(matchLetter);
+              const indexMult2 = multiplicarX2(matchLetter);
 
               // Transformaremos el string en un Array
               const arrayFormaGuion = transformStringIntoArray();
@@ -105,7 +90,6 @@
 
               console.log(newLettersVisible);
               ArraytoString(newLettersVisible);
-              
             }
           } else {
             wrongGuess(anyButton);
