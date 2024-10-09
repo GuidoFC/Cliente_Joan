@@ -22,12 +22,10 @@
         // TODO necesito crear un div padre y luego muchos div para cada letra
         // contendor padre
 
-        
-
         const getDivContendor = createContendorDiv();
 
         // crear los div dentro del contendor padre
-        
+
         createAllDivForEachLetter(getDivContendor);
         styleDefault(getDivContendor);
         // to do an array with 4 words y hacer una que aparezca
@@ -38,25 +36,24 @@
         // tranform all the words in this character "_"
         transformWordsToUnderscore(palabraAdivinar);
         //
-        // select all the button with class -> classButton
-        const allButtons = document.querySelectorAll(".classButton");
-        console.table(allButtons);
 
-        // disable a button
-        function disableButton() {
-          const anyButton = this;
-          // the button can´t be clicked two times
-          anyButton.disabled = true;
-        }
+        
 
-        for (let i = 0; i < allButtons.length; i++) {
-          allButtons[i].addEventListener("click", disableButton);
-          // con esta función anomina evito que se ejecute inmediatamente la función!!!!!!
-          // Entender que significa esto de event
-          // Pasamos el evento click para poder acceder al botón clicado
-          allButtons[i].addEventListener("click", (event) =>
-            getTextButton(savePalabraAdivinar)
-          );
+        addFunctionsAllButtons(savePalabraAdivinar);
+
+        function addFunctionsAllButtons(savePalabraAdivinar) {
+          // select all the button with class -> classButton
+          // console.table(allButtons);
+          const allButtons = document.querySelectorAll(".classButton");
+          for (let i = 0; i < allButtons.length; i++) {
+            allButtons[i].addEventListener("click", disableButton);
+            // con esta función anomina evito que se ejecute inmediatamente la función!!!!!!
+            // Entender que significa esto de event
+            // Pasamos el evento click para poder acceder al botón clicado
+            allButtons[i].addEventListener("click", (event) =>
+              getTextButton(savePalabraAdivinar)
+            );
+          }
         }
 
         // get text of the button
@@ -66,6 +63,7 @@
 
           const getLetter = anyButton.textContent;
           const palabraCriptada = savePalabraAdivinar;
+          
 
           if (thereIsThisLetter(getLetter, palabraCriptada)) {
             console.log("pintar verde");

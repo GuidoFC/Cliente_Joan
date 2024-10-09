@@ -20,3 +20,12 @@ const alphabetAll = [
 function generateRandomNumber(max) {
     return Math.floor(Math.random() * max);
   }
+
+// disable a button
+function disableButton() {
+    const anyButton = this;
+    // the button can´t be clicked two times
+    anyButton.disabled = true;
+  }
+
+  
