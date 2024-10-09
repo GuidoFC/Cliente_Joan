@@ -28,4 +28,16 @@ function disableButton() {
     anyButton.disabled = true;
   }
 
-  
+  function getNumberPhoto(getImg) {
+    const getSrcIMG = getImg.src;
+    // getImg.src =
+    //   "http://127.0.0.1:5500/Ex%202.%20Penjat/assests/img/" +
+    //   incrementNumber +
+    //   ".PNG";
+    // console.log(getSrcIMG);
+    // He hecho esta resta porque se que si empiezo por el final, siempre obtendre el numero
+    // el problema seria si hubiera mas de 9 fotos
+    const getPosition = Number(getSrcIMG.length - 5);
+    const getNumber = getSrcIMG.charAt(getPosition);
+    return getNumber;
+  }

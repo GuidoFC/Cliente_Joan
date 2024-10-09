@@ -93,7 +93,27 @@ function putImg(numPhoto) {
     // cambiaremos la imagen
     changePhoto();
   }
-  
+
   function changeButonRed(anyButton) {
     anyButton.style.background = "rgb(205, 56, 75)";
+  }
+
+  function changePhoto() {
+    // Tengo que saber el numero de la foto
+    const getImg = document.querySelector("#photo");
+
+    const getNumberActualPhoto = getNumberPhoto(getImg);
+
+    console.log(getNumberActualPhoto);
+
+    // Convertimos a número y sumamos 1 para obtener el siguiente número
+    const incrementNumber = Number(getNumberActualPhoto) + 1;
+    // incrementar ese numero para cambiar de foto
+    // debugger;
+    const getSrcIMG = getImg.src;
+    const pngActual = getNumberActualPhoto + ".PNG";
+    const nextPng = incrementNumber + ".PNG";
+    const newSrc = getSrcIMG.replace(pngActual, nextPng);
+    // Asignamos el nuevo `src` a la imagen para que cambie
+    getImg.src = newSrc;
   }
