@@ -88,4 +88,12 @@ function putImg(numPhoto) {
     newParagraph.textContent = allLettersAreUnderscore;
   }
 
+  function wrongGuess(anyButton) {
+    changeButonRed(anyButton);
+    // cambiaremos la imagen
+    changePhoto();
+  }
   
+  function changeButonRed(anyButton) {
+    anyButton.style.background = "rgb(205, 56, 75)";
+  }

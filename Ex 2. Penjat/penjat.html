@@ -37,8 +37,6 @@
         transformWordsToUnderscore(palabraAdivinar);
         //
 
-        
-
         addFunctionsAllButtons(savePalabraAdivinar);
 
         function addFunctionsAllButtons(savePalabraAdivinar) {
@@ -63,7 +61,6 @@
 
           const getLetter = anyButton.textContent;
           const palabraCriptada = savePalabraAdivinar;
-          
 
           if (thereIsThisLetter(getLetter, palabraCriptada)) {
             console.log("pintar verde");
@@ -128,13 +125,13 @@
               // cuando haga match hacer un cambio
             }
           } else {
-            console.log("pintar rojo");
-            anyButton.style.background = "rgb(205, 56, 75)";
-            // cambiaremos la imagen
-            changePhoto();
+            wrongGuess(anyButton);
+            
           }
         }
       }
+
+      
 
       function thereIsThisLetter(getLetter, palabraCriptada) {
         const getWord = getLetter;
