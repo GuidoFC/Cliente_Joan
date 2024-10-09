@@ -29,6 +29,7 @@ function putImg(numPhoto) {
     const divNew = document.createElement("div");
     divNew.setAttribute("id", "contendor");
     getBody.appendChild(divNew);
+    return divNew;
   }
 
   function createAllDivForEachLetter(getDivContendor) {
