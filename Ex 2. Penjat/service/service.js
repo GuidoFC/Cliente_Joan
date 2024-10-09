@@ -69,3 +69,16 @@ function disableButton() {
     }
     return arrayFormaGuion;
   }
+
+  function ArraytoString(newLettersVisible) {
+    let reconstruirPalabra = "";
+    // volver atransforma de Array to String
+    for (let i = 0; i < newLettersVisible.length; i++) {
+      reconstruirPalabra =
+        reconstruirPalabra + newLettersVisible[i];
+    }
+    debugger;
+    console.log(reconstruirPalabra);
+    updateParagraph(reconstruirPalabra);
+    
+  }

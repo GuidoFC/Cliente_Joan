@@ -117,3 +117,8 @@ function putImg(numPhoto) {
     // Asignamos el nuevo `src` a la imagen para que cambie
     getImg.src = newSrc;
   }
+
+  function updateParagraph(reconstruirPalabra) {
+    document.querySelector("#palabaElegida").textContent =
+      reconstruirPalabra;
+  }

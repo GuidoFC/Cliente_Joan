@@ -97,23 +97,15 @@
               // Transformaremos el string en un Array
               const arrayFormaGuion = transformStringIntoArray();
 
-              const newLettersVisible = changeHyphenForLetter(arrayFormaGuion, getLetter, indexMult2)
+              const newLettersVisible = changeHyphenForLetter(
+                arrayFormaGuion,
+                getLetter,
+                indexMult2
+              );
 
+              console.log(newLettersVisible);
+              ArraytoString(newLettersVisible);
               
-              console.log(newLettersVisible)
-              
-
-              let reconstruirPalabra = "";
-              // volver atransforma de Array to String
-              for (let i = 0; i < newLettersVisible.length; i++) {
-                reconstruirPalabra = reconstruirPalabra + newLettersVisible[i];
-              }
-              debugger;
-              console.log(reconstruirPalabra);
-              document.querySelector("#palabaElegida").textContent =
-                reconstruirPalabra;
-
-              // cuando haga match hacer un cambio
             }
           } else {
             wrongGuess(anyButton);
