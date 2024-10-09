@@ -70,6 +70,63 @@
             // cambiar el color de un solo boton
             anyButton.style.background = "rgb(111, 247, 112)";
             // desvelaremos una casilla
+            unveilLetter(getLetter, palabraCriptada);
+            function unveilLetter(getLetter, palabraCriptada) {
+              const matchLetter = [];
+              console.log(palabraCriptada);
+              for (let i = 0; i < palabraCriptada.length; i++) {
+                if (palabraCriptada.charAt(i) === getLetter) {
+                  matchLetter.push(i);
+                }
+              }
+
+              console.log(
+                "Posicion de las letras de ordenador, con la letra O elegida"
+              );
+              const indexMult2 = multiplicarX2(matchLetter);
+              function multiplicarX2(matchLetter) {
+                const getNumber = [];
+                for (let i = 0; i < matchLetter.length; i++) {
+                  const getIndex = Number(matchLetter[i]) * 2;
+                  getNumber.push(getIndex);
+                }
+                return getNumber;
+              }
+
+              console.log(indexMult2);
+              // Tengo la palabra asi: _ _ _ _
+              // Tengo que contar los guiones
+
+              const getpalabaElegidaFormatoGuion =
+                document.querySelector("#palabaElegida").textContent;
+
+              // Transformaremos el string en un Array
+              const arrayFormaGuion = [];
+              for (let i = 0; i < getpalabaElegidaFormatoGuion.length; i++) {
+                arrayFormaGuion.push(getpalabaElegidaFormatoGuion[i]);
+              }
+
+              // TODO!!!!!
+
+              for (let i = 0; i < indexMult2.length; i++) {
+                const indexChange = indexMult2[i];
+                arrayFormaGuion[indexChange] = getLetter;
+              }
+
+              console.log(arrayFormaGuion);
+
+              let reconstruirPalabra = "";
+              // volver atransforma de Array to String
+              for (let i = 0; i < arrayFormaGuion.length; i++) {
+                reconstruirPalabra = reconstruirPalabra + arrayFormaGuion[i];
+              }
+              debugger;
+              console.log(reconstruirPalabra);
+              document.querySelector("#palabaElegida").textContent =
+                reconstruirPalabra;
+
+              // cuando haga match hacer un cambio
+            }
           } else {
             console.log("pintar rojo");
             anyButton.style.background = "rgb(205, 56, 75)";
@@ -97,27 +154,28 @@
 
         console.log(getNumberActualPhoto);
 
+        // Convertimos a número y sumamos 1 para obtener el siguiente número
         const incrementNumber = Number(getNumberActualPhoto) + 1;
         // incrementar ese numero para cambiar de foto
         // TODO no puedo pasar a otra foto
-        debugger;
+        // debugger;
         const getSrcIMG = getImg.src;
         const pngActual = getNumberActualPhoto + ".PNG";
         const nextPng = incrementNumber + ".PNG";
         const newSrc = getSrcIMG.replace(pngActual, nextPng);
         // Asignamos el nuevo `src` a la imagen para que cambie
         getImg.src = newSrc;
-
-        // getImg.src =
-        //   "http://127.0.0.1:5500/Ex%202.%20Penjat/assests/img/" +
-        //   incrementNumber +
-        //   ".PNG";
       }
 
       function getNumberPhoto(getImg) {
         const getSrcIMG = getImg.src;
-
-        console.log(getSrcIMG);
+        // getImg.src =
+        //   "http://127.0.0.1:5500/Ex%202.%20Penjat/assests/img/" +
+        //   incrementNumber +
+        //   ".PNG";
+        // console.log(getSrcIMG);
+        // He hecho esta resta porque se que si empiezo por el final, siempre obtendre el numero
+        // el problema seria si hubiera mas de 9 fotos
         const getPosition = Number(getSrcIMG.length - 5);
         const getNumber = getSrcIMG.charAt(getPosition);
         return getNumber;
