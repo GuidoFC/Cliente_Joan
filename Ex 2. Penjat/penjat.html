@@ -94,28 +94,19 @@
               // Tengo la palabra asi: _ _ _ _
               // Tengo que contar los guiones
 
-              const getpalabaElegidaFormatoGuion =
-                document.querySelector("#palabaElegida").textContent;
-
               // Transformaremos el string en un Array
-              const arrayFormaGuion = [];
-              for (let i = 0; i < getpalabaElegidaFormatoGuion.length; i++) {
-                arrayFormaGuion.push(getpalabaElegidaFormatoGuion[i]);
-              }
+              const arrayFormaGuion = transformStringIntoArray();
 
-              // TODO!!!!!
+              const newLettersVisible = changeHyphenForLetter(arrayFormaGuion, getLetter, indexMult2)
 
-              for (let i = 0; i < indexMult2.length; i++) {
-                const indexChange = indexMult2[i];
-                arrayFormaGuion[indexChange] = getLetter;
-              }
-
-              console.log(arrayFormaGuion);
+              
+              console.log(newLettersVisible)
+              
 
               let reconstruirPalabra = "";
               // volver atransforma de Array to String
-              for (let i = 0; i < arrayFormaGuion.length; i++) {
-                reconstruirPalabra = reconstruirPalabra + arrayFormaGuion[i];
+              for (let i = 0; i < newLettersVisible.length; i++) {
+                reconstruirPalabra = reconstruirPalabra + newLettersVisible[i];
               }
               debugger;
               console.log(reconstruirPalabra);
@@ -128,18 +119,6 @@
             wrongGuess(anyButton);
           }
         }
-      }
-
-      
-
-      function thereIsThisLetter(getLetter, palabraCriptada) {
-        const getWord = getLetter;
-        for (let i = 0; i < palabraCriptada.length; i++) {
-          if (palabraCriptada.charAt(i) === getLetter) {
-            return true;
-          }
-        }
-        return false;
       }
 
       createDivToWords(alfabeto);

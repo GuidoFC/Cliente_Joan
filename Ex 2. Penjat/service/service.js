@@ -28,6 +28,16 @@ function disableButton() {
     anyButton.disabled = true;
   }
 
+  function thereIsThisLetter(getLetter, palabraCriptada) {
+    const getWord = getLetter;
+    for (let i = 0; i < palabraCriptada.length; i++) {
+      if (palabraCriptada.charAt(i) === getLetter) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   function getNumberPhoto(getImg) {
     const getSrcIMG = getImg.src;
     // getImg.src =
@@ -40,4 +50,22 @@ function disableButton() {
     const getPosition = Number(getSrcIMG.length - 5);
     const getNumber = getSrcIMG.charAt(getPosition);
     return getNumber;
+  }
+
+  function transformStringIntoArray() {
+    const getpalabaElegidaFormatoGuion =
+      document.querySelector("#palabaElegida").textContent;
+    const arrayFormaGuion = [];
+    for (let i = 0; i < getpalabaElegidaFormatoGuion.length; i++) {
+      arrayFormaGuion.push(getpalabaElegidaFormatoGuion[i]);
+    }
+    return arrayFormaGuion;
+  }
+
+  function changeHyphenForLetter(arrayFormaGuion, getLetter, indexMult2) {
+    for (let i = 0; i < indexMult2.length; i++) {
+      const indexChange = indexMult2[i];
+      arrayFormaGuion[indexChange] = getLetter;
+    }
+    return arrayFormaGuion;
   }
