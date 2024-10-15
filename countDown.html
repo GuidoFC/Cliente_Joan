@@ -14,7 +14,29 @@
       createBox();
 
       createButton();
+
+      createParrafo();
+
+      // creamos un objeto Cronometro
+      const myCronometro = new Cronometro();
+
       
+
+      
+
+      // como coger el valor de un input
+      const getButton = document.querySelector("#button");
+
+      // Función anónima: Aquí estás creando una función que no se ejecutará inmediatamente,
+      //  sino que se ejecutará cuando ocurra el evento click.
+      getButton.addEventListener("click", function () {
+        if (isNumber(myCronometro) && isPositiveNumber(myCronometro)) {
+          console.log("Es un numero y es positivo");
+          const num = myCronometro.numSeg;
+          console.log(num);
+
+        }
+      });
     </script>
   </body>
 </html>

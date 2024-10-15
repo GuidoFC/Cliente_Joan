@@ -1,0 +1,35 @@
+      // todo: primero tengo que hacer que el usuario escriba en la caja
+      // y luego pulsar el boton go!
+      
+      const valueBox = getNumFromBox();
+      console.log("Valor de la caja");
+      // etiqueta input --> por defecto su valor es = "";
+      console.log(valueBox);
+      console.log(typeof valueBox);
+
+      
+
+      function editParrafo(valueBox) {
+        const getParrafo = document.querySelector("#parrafo");
+        if (valueBox == "") {
+          console.log("hola?")
+          getParrafo.textContent = "Introduce un número";
+          return
+        }
+        if (isNumValid(valueBox)) {
+          getParrafo.textContent = "valueBox";
+        }
+        getParrafo.textContent = "Error";
+      }
+
+      // como coger el valor de un input
+      const getButton = document.querySelector("#button");
+
+      getButton.addEventListener("click", getNumFromBox);
+      getButton.addEventListener("click", editParrafo(valueBox));
+
+      var now = new Date().getTime();
+      console.log("El numero es");
+      // console.log(value);
+      console.log("la fecha es");
+      console.log(now);
