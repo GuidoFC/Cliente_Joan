@@ -3,6 +3,7 @@ function Cronometro() {
     this.currentTime = 0;
     this.isRunning = false;
     this.incremenetCurrentTime = 0;
+    
 
     
   }

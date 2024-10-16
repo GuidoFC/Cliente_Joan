@@ -34,7 +34,7 @@ function isNumValid(valueBox) {
     return false;
   }
 
-  function getCurrentTimeinSeconds(myCronometro) {
+  function getCurrentTimeinSeconds() {
     const capturaFecha = new Date();
     console.log("La fecha de ahora es");
     console.log(capturaFecha);
@@ -46,8 +46,8 @@ function isNumValid(valueBox) {
     console.log("Cuántos segundos han transcurrido desde 1970");
     console.log(segundos);
      
-    myCronometro.currentTime = segundos // Devolver el valor en segundos
-
+    // Devolver el valor en segundos
+    return segundos;
   }
 
   function incrementSeg(myCronometro, num) {
@@ -55,18 +55,36 @@ function isNumValid(valueBox) {
     // sumo segundos
     console.log("Segundos introducidos")
     console.log(num)
-    const incrementarSeg = Number(segundos + num);
+    myCronometro.incremenetCurrentTime = Number(myCronometro.currentTime + num);
     // cuantos segundos han trascurrido desde 1970
     console.log("cuantos segundos han trascurrido desde 1970 + seg que me han pasado");
-    console.log(incrementarSeg);
+    console.log(myCronometro.incremenetCurrentTime);
 
-    // pasamos a milisegundos
-    var avanzadoMilisegundos = incrementarSeg * 1000;
-    // para poder ver la fecha de una manera lógica
+  }
 
-    myCronometro.incremenetCurrentTime = avanzadoMilisegundos;
-    
-    var capturaFechaAvanzada = new Date(avanzadoMilisegundos);
-    console.log("La fecha nueva + los segundoa incrementados es");
-    console.log(capturaFechaAvanzada);
+  function starCountDown(myCronometro) {
+    const getP = getParrafo();
+    // obtener el tiempo actual
+    debugger;
+    const tiempoActual = getCurrentTimeinSeconds();
+    console.log("obtener el tiempo actual en el método SetInterval");
+    console.log(tiempoActual);
+
+    const diferencia = parseInt(
+      myCronometro.incremenetCurrentTime - tiempoActual
+    );
+    console.log("Diferencia de tiempo que ha pasado");
+    console.log(diferencia);
+
+    if (diferencia <= 0) {
+      getP.textContent = "Sorpresa!!!";
+      console.log("Se para el cronometro");
+      console.log(diferencia);
+      clearInterval(myInterval);
+    } else {
+      getP.textContent = diferencia;
+      console.log("el cronometro esta en este valor");
+      console.log(diferencia);
+      
+    }
   }

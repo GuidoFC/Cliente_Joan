@@ -26,6 +26,10 @@ function createBox() {
     divContenedor.appendChild(parrafo);
   }
 
+  function getParrafo(){
+    const getP = document.querySelector("#parrafo");
+    return getP;
+  }
  
 
   function getValueFromBox() {

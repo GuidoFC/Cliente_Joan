@@ -22,6 +22,8 @@
 
       const getButton = document.querySelector("button");
 
+      
+
       // Función anónima: Aquí estás creando una función que no se ejecutará inmediatamente,
       //  sino que se ejecutará cuando ocurra el evento click.
       getButton.addEventListener("click", function () {
@@ -30,8 +32,21 @@
           const num = myCronometro.numSegIntroducido;
           console.log(num);
           // obtener el tiempo actual
-          getCurrentTimeinSeconds(myCronometro);
+          myCronometro.currentTime = getCurrentTimeinSeconds();
+          console.log("Numero de segundos guardado en Cronometro:");
+          console.log(myCronometro.currentTime);
           incrementSeg(myCronometro, num);
+          if (!myCronometro.isRunning) {
+            console.log("Empieza el cronometro");
+            myCronometro.isRunning = true;
+
+            // TENGO QUE PASARLE UNA FUNCIÓN ANONOMA AL SETINTERVAL!!!!!
+            var myInterval = setInterval(function () {
+              starCountDown(myCronometro);
+            }, 1000);
+          } else {
+            console.log("Cronometro ya esta ejecutado");
+          }
           //
         }
       });
