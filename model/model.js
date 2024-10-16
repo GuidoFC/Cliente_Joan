@@ -1,5 +1,8 @@
 function Cronometro() {
-    this.numSeg = 0;
+    this.numSegIntroducido = 0;
     this.currentTime = 0;
     this.isRunning = false;
+    this.incremenetCurrentTime = 0;
+
+    
   }

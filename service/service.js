@@ -18,7 +18,7 @@ function isNumValid(valueBox) {
     if (!isNaN(parseFloat(getNum))) {
       editParrafo(getNum);
       console.log("Es un numero");
-      myCronometro.numSeg = Number(getNum);
+      myCronometro.numSegIntroducido = Number(getNum);
       return true;
     } else {
       console.log("No es un número");
@@ -28,8 +28,45 @@ function isNumValid(valueBox) {
   }
 
   function isPositiveNumber(myCronometro) {
-    if (myCronometro.numSeg > 0) {
+    if (myCronometro.numSegIntroducido > 0) {
       return true;
     }
     return false;
+  }
+
+  function getCurrentTimeinSeconds(myCronometro) {
+    const capturaFecha = new Date();
+    console.log("La fecha de ahora es");
+    console.log(capturaFecha);
+    // Obtiene los milisegundos desde 1970
+    const capturarMil = capturaFecha.getTime();
+    // Divide los milisegundos por 1000 para obtener los segundos
+    const segundos = capturarMil / 1000;
+    // Cuántos segundos han transcurrido desde 1970
+    console.log("Cuántos segundos han transcurrido desde 1970");
+    console.log(segundos);
+     
+    myCronometro.currentTime = segundos // Devolver el valor en segundos
+
+  }
+
+  function incrementSeg(myCronometro, num) {
+    const segundos = myCronometro.currentTime;
+    // sumo segundos
+    console.log("Segundos introducidos")
+    console.log(num)
+    const incrementarSeg = Number(segundos + num);
+    // cuantos segundos han trascurrido desde 1970
+    console.log("cuantos segundos han trascurrido desde 1970 + seg que me han pasado");
+    console.log(incrementarSeg);
+
+    // pasamos a milisegundos
+    var avanzadoMilisegundos = incrementarSeg * 1000;
+    // para poder ver la fecha de una manera lógica
+
+    myCronometro.incremenetCurrentTime = avanzadoMilisegundos;
+    
+    var capturaFechaAvanzada = new Date(avanzadoMilisegundos);
+    console.log("La fecha nueva + los segundoa incrementados es");
+    console.log(capturaFechaAvanzada);
   }
